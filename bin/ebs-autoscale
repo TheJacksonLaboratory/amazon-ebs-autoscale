@@ -59,16 +59,16 @@ calc_threshold() {
   # as more ebs volumes are added, the threshold level increases
 
   local num_devices=$(get_num_devices)
-  local threshold=50
+  local threshold=100
 
   if [ "$num_devices" -ge "4" ] && [ "$num_devices" -le "6" ]; then
-    threshold=80
+    threshold=100
   elif [ "$num_devices" -gt "6" ] && [ "$num_devices" -le "10" ]; then
-    threshold=90
+    threshold=100
   elif [ "$num_devices" -gt "10" ]; then
-    threshold=90
+    threshold=100
   else
-    threshold=50
+    threshold=100
   fi
 
   echo ${threshold}
@@ -79,16 +79,16 @@ calc_new_size() {
   # new volume sizes increase as the number of attached volumes increase
   
   local num_devices=$(get_num_devices)
-  local new_size=150
+  local new_size=15
 
   if [ "$num_devices" -ge "4" ] && [ "$num_devices" -le "6" ]; then
-    new_size=300
+    new_size=10
   elif [ "$num_devices" -gt "6" ] && [ "$num_devices" -le "10" ]; then
-    new_size=1000
+    new_size=10
   elif [ "$num_devices" -gt "10" ]; then
-    new_size=1500
+    new_size=15
   else
-    new_size=150
+    new_size=15
   fi
 
   echo ${new_size}
